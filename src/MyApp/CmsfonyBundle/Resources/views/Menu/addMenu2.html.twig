@@ -1,0 +1,250 @@
+{% extends 'MyAppCmsfonyBundle::base.html.twig' %}
+
+{% block bigTitle %}Gestion des Menus{% endblock %}
+{% block dest1 %}<a href="{{ path('my_app_cmsfony_menuList') }}">Tous les menus</a>{% endblock %}
+{% block dest2 %}Nouveau menu{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Ajouter un menu </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="get" class="form-horizontal">
+                        <div class="form-group"><label class="col-sm-2 control-label">Alias du menu</label>
+                            <div class="col-sm-10"><input type="text" class="form-control"></div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">Positionnement <br/>
+                            </label>
+
+                            <div class="col-sm-10">
+                                <div><label> <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios"> Menu principal </label></div>
+                                <div><label> <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios"> Menu secondaire </label></div>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group"><label class="col-sm-2 control-label">Ajouter une page</label>
+
+                            <div class="col-sm-10">
+                                <script>
+                                    function changeText($opti)
+                                    {
+                                        var $pos = 1;
+                                        $("#select1").click(function() {
+                                            document.getElementById('exchangeMenu').innerHTML = '&nbsp;Ajouter au menu';
+                                            $pos = 1;
+                                        });
+                                        $("#select2").click(function() {
+                                            document.getElementById('exchangeMenu').innerHTML = '&nbsp;Supprimer du menu&nbsp; ';
+
+                                            $pos = 2;
+                                        });
+                                        $('#btnAddRem').click(function() {
+
+
+                                            if ($pos == 1) {
+                                                $('#select1 option:selected').each(function() {
+                                                    $('#select2').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
+                                                    $(this).remove();
+                                                });
+                                            } else if ($pos == 2) {
+
+                                                $('#select2 option:selected').each(function() {
+                                                    $('#select1').append("<option value='" + $(this).val() + "'>" + $(this).text() + "</option>");
+                                                    $(this).remove();
+                                                });
+                                            }
+
+                                        });
+                                    }
+
+                                </script>
+                                <div class="col-lg-4 m-l-n"><select id="select1" onclick='changeText(1)' class="form-control" multiple="">
+                                        {% for currentPage in pages %}
+                                            <option  value="{{ currentPage.title }}">{{ currentPage.title }}</option>
+                                        {% endfor %}
+                                    </select></div>
+
+
+
+                                <div class = "col-lg-4 m-l-n">
+
+                                    <center>
+
+                                        <br />
+                                        <button  id="btnAddRem" type="button" class="btn btn-white btn-bitbucket"> 
+                                            <i class ="fa fa-exchange" id='exchangeMenu'>&nbsp;Ajouter au menu</i>
+                                        </button>
+
+                                    </center>
+
+                                </div>
+                                <div class="col-lg-4 m-l-n"><select id="select2" onclick='changeText(2)' class="form-control" multiple="">
+
+                                    </select></div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                             <div class="row">
+                <div class="col-lg-6">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Liste des pages</h5>
+                        </div>
+                        <div class="ibox-content">
+
+                            <p  class="m-b-lg">
+                                <strong>Nestable</strong> is an interactive hierarchical list. You can drag and drop to rearrange the order. It works well on touch-screens.
+                            </p>
+
+                            <div class="dd" id="nestable">
+                                <ol class="dd-list">
+                                    <li class="dd-item" data-id="1">
+                                        <div class="dd-handle">1 - Lorem ipsum</div>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="m-t-md">
+                                <h5>Serialised Output</h5>
+                            </div>
+                            <textarea id="nestable-output" class="form-control"></textarea>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Liste des pages du menu</h5>
+                        </div>
+                        <div class="ibox-content">
+
+                            <p class="m-b-lg">
+                                Each list you can customize by standard css styles. Each element is responsive so you can add to it any other element to improve functionality of list.
+                            </p>
+
+                            <div class="dd" id="nestable2">
+                                <ol class="dd-list">
+                                    <li class="dd-item" data-id="1">
+                                        <div class="dd-handle">
+                                                    <span class="pull-right"> 11:00 pm </span>
+                                                    <span class="label label-info"><i class="fa fa-laptop"></i></span> Vestibulum commodo
+                                                </div>
+                                    </li>
+
+                                   
+                                </ol>
+                            </div>
+                            <div class="m-t-md">
+                                <h5>Serialised Output</h5>
+                            </div>
+                            <textarea id="nestable2-output" class="form-control"></textarea>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+       
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="hr-line-dashed"></div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-white" type="submit">Annuler</button>
+                                <button class="btn btn-primary" type="submit">Enregistrer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+
+    <script>
+         $(document).ready(function(){
+
+             var updateOutput = function (e) {
+                 var list = e.length ? e : $(e.target),
+                         output = list.data('output');
+                 if (window.JSON) {
+                     output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+                 } else {
+                     output.val('JSON browser support required for this demo.');
+                 }
+             };
+             // activate Nestable for list 1
+             $('#nestable').nestable({
+                 group: 1
+             }).on('change', updateOutput);
+
+             // activate Nestable for list 2
+             $('#nestable2').nestable({
+                 group: 1
+             }).on('change', updateOutput);
+
+             // output initial serialised data
+             updateOutput($('#nestable').data('output', $('#nestable-output')));
+             updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+             $('#nestable-menu').on('click', function (e) {
+                 var target = $(e.target),
+                         action = target.data('action');
+                 if (action === 'expand-all') {
+                     $('.dd').nestable('expandAll');
+                 }
+                 if (action === 'collapse-all') {
+                     $('.dd').nestable('collapseAll');
+                 }
+             });
+         });
+    </script>
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends 'MyAppCmsfonyBundle::base.html.twig' %}
+
+{% block bigTitle %}Gestion des Menus{% endblock %}
+{% block dest1 %}<a href="{{ path('my_app_cmsfony_menuList') }}">Tous les menus</a>{% endblock %}
+{% block dest2 %}Nouveau menu{% endblock %}
+{% block content %} 
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Ajouter un menu </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="ibox-content">
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                    <div class="form-group"><label class="col-sm-2 control-label">Titre du menu</label>
+                        <div class="col-sm-10">{{ form_widget(form.title, {'attr': {'class': 'form-control'} }) }}</div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-2 control-label">Positionnement <br/>
+                        </label>
+
+                        <div class="col-sm-10">
+                            <div><label> <input type="radio" {% if menu.position=='primary' %} checked=""{% endif %} value="option1" id="optionsRadios1" name="optionsRadios"> Menu principal </label></div>
+                            <div><label> <input type="radio" {% if menu.position=='secondary' %} checked=""{% endif %}value="option2" id="optionsRadios2" name="optionsRadios"> Menu secondaire </label></div>
+                        </div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+
+
+                    <div class="col-lg-6">
+                        <div class="ibox ">
+                            <div class="ibox-title">
+                                <h5>Liste de toutes les pages</h5>
+                            </div>
+                            <div class="ibox-content">
+
+                                <p  class="m-b-lg">
+                                    Cliquer et déplacer la page à <strong>ajouter</strong> vers les pages du menu.
+                                </p>
+                                <div style="width:450px;height:200px;overflow:auto;padding:5px;">
+
+                                    <div class="dd" id="nestable">
+                                        <ol class="dd-list">
+                                            {% for currentPage in availablePages %}
+                                                <li class="dd-item" data-id="{{ currentPage.id}}">
+                                                    <div class="dd-handle">{{ currentPage.title}}</div>
+                                                </li>
+                                            {% endfor %}
+
+
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div hidden>
+                                    <div class="m-t-md">
+                                        <h5>Serialised Output</h5>
+                                    </div>
+                                    <textarea name="nestable-output" id="nestable-output" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ibox ">
+                            <div class="ibox-title">
+                                <h5>Liste des pages dans le menu</h5>
+                            </div>
+                            <div class="ibox-content">
+
+                                <p  class="m-b-lg">
+                                    Cliquer et déplacer la page à <strong>retirer</strong> vers la liste des pages disponibles.
+                                </p>
+                                <div style="width:450px;height:200px;overflow:auto;padding:5px;">
+
+                                    <div class="dd" id="nestable2">
+                                        <ol class="dd-list">
+
+                                            <li class="dd-item" data-id="0">
+                                                <div class="dd-handle">
+                                                </div>
+                                            </li>
+
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div hidden>
+                                    <div class="m-t-md">
+                                        <h5>Serialised Output</h5>
+                                    </div>
+                                    <textarea  name="nestable2-output" id="nestable2-output" class="form-control"></textarea>
+                                </div> 
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div >
+                        {{ form_widget(form.position, {'attr': {'class': 'positionInput'}}) }}
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <button class="btn btn-white" type="submit">Annuler</button>
+                            <button class="btn btn-primary" type="submit">Enregistrer</button>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+            $("#optionsRadios1").change(function() {
+                if ($('input[value=option1]').is(':checked')) {
+                    $('.positionInput').val('primary');
+                }
+            });
+            $("#optionsRadios2").change(function() {
+                if ($('input[value=option2]').is(':checked')) {
+                    $('.positionInput').val('secondary');
+                }
+            });
+
+            if ($('input[value=option1]').is(':checked')) {
+                $('.positionInput').val('primary');
+            }
+            if ($('input[value=option2]').is(':checked')) {
+                $('.positionInput').val('secondary');
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            var updateOutput = function(e) {
+                var list = e.length ? e : $(e.target),
+                        output = list.data('output');
+                if (window.JSON) {
+                    output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+                } else {
+                    output.val('JSON browser support required for this demo.');
+                }
+            };
+            // activate Nestable for list 1
+            $('#nestable').nestable({
+                group: 1
+            }).on('change', updateOutput);
+
+            // activate Nestable for list 2
+            $('#nestable2').nestable({
+                group: 1
+            }).on('change', updateOutput);
+
+            // output initial serialised data
+            updateOutput($('#nestable').data('output', $('#nestable-output')));
+            updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+            $('#nestable-menu').on('click', function(e) {
+                var target = $(e.target),
+                        action = target.data('action');
+                if (action === 'expand-all') {
+                    $('.dd').nestable('expandAll');
+                }
+                if (action === 'collapse-all') {
+                    $('.dd').nestable('collapseAll');
+                }
+            });
+        });
+    </script>
+{% endblock %}

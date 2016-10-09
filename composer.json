@@ -1,5 +1,5 @@
 {
-    "name": "iskander/cmsFony",
+    "name": "iskander/mon-projet2",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -20,19 +20,11 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "doctrine/dbal": "dev-master",
-        "symfony-cmf/routing-auto-bundle": "~1.0",
-        "symfony-cmf/menu-bundle": "~1.2",
-        "sonata-project/doctrine-phpcr-admin-bundle": "~1.2",
-        "symfony-cmf/tree-browser-bundle": "~1.1",
-        "doctrine/data-fixtures": "~1.0",
-        "symfony-cmf/routing-bundle": "~1.3",
-        "symfony-cmf/routing": "~1.3",
-        "jackalope/jackalope-doctrine-dbal": "dev-master",
-        "jackalope/jackalope-jackrabbit": "dev-master",
-        "doctrine/phpcr-odm": "dev-master",
-        "doctrine/phpcr-bundle": "dev-master"
-        
+        "friendsofsymfony/user-bundle": "dev-master",
+        "egeloen/ckeditor-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "symfony/serializer": "dev-master",
+        "it-blaster/color-picker-type-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

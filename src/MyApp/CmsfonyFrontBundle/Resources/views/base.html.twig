@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <link rel="icon" type="image/png" href="{{ asset('front/img/favico.png') }}" />
+        <title>{% block title %}CMSFony{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+       
+    {% block stylesheet %}{% endblock %}
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
+    <!--[if IE]>
+            <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+            <link href="http://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" type="text/css">
+            <link href="http://fonts.googleapis.com/css?family=Lato:700" rel="stylesheet" type="text/css">
+            <link href="http://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet" type="text/css">
+    <![endif]-->
+
+    <link href="{{ asset ('front/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{ asset ('front/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset ('front/css/theme.css')}}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+{% block body %}
+    <body>
+        <!--header-->
+        <div class="header">
+            {{ render(controller("MyAppCmsfonyBundle:Menu:renderPrimaryMenu"))}}
+        </div>
+        <!--//header-->
+        <!--page-->
+        <!--banner-->
+        <div id="banner">
+            <div class="container intro_wrapper">
+                <div class="inner_content">
+                    <h1> {% block smallTitle %}CMSFony{% endblock %}</h1>
+                    <h1 class="title"> {% block bigTitle %}Big Title{% endblock %}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container wrapper">
+            <div class="inner_content">	
+                <div class="row">
+                    <!--DRIBBBLE-->
+                    {% block content %}Page list{% endblock %}
+                </div>
+            </div>
+        </div> 	
+        <!--//page-->
+
+        <!--footer-->
+        <div id="footer2">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <div class="copyright">
+                            Footer
+                            &copy;
+                            <script type="text/javascript">
+                                //<![CDATA[
+                                var d = new Date()
+                                document.write(d.getFullYear())
+                                //]]>
+                            </script>
+                            - All Rights Reserved :
+                            Footer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- up to top -->
+        <a href="#"><i class="go-top hidden-phone hidden-tablet fa fa-angle-double-up"></i></a>
+        <!--//end--> 
+
+        <script src='{{ asset ('front/js/jquery.js')}}'></script>
+        <script src="{{ asset ('front/js/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset ('front/js/scripts.js')}}"></script>
+
+
+    {% block javascripts %}{% endblock %}
+
+</body>{% endblock %}
+</html>

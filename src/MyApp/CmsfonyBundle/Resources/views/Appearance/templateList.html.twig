@@ -1,0 +1,80 @@
+{% extends 'MyAppCmsfonyBundle::base.html.twig' %}
+
+{% block bigTitle %} Apparence{% endblock %}
+{% block dest1 %}<a href="">Gestion des templates</a>{% endblock %}
+{% block dest2 %}-{% endblock %}
+{% block content %}
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content text-center p-md">
+
+                        <h2>
+                            La configuration visuelle du site se fait à travers 
+                            <a href=""><span class="text-navy">cette page.</span></a></h2>
+
+                        <p>
+                            Ici vous aurez la possibilité de changer la configuration de vos templates.
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content text-center p-md">
+
+                        <h4 class="m-b-xxs">CMSFony template par défaut </h4>
+                        <small>(Version Bêta 0.9)</small>
+                        <p></p>
+
+                        <span class="gold_tag">Activé</span>
+                        <a href="{{path('my_app_cmsfony_defaultTemplateConfig',{'templateTitle':'default'})}}"> <span class="simple_tag">Configurer</span></a>
+                        <div class="m-t-md">
+                            <div class="p-lg " style="margin-top:-30px;">
+                                <a href="dashboard_4.html"><img class="img-responsive img-shadow" src="{{ asset('admin/img/dashbard4_1.png') }}" alt=""></a>
+                            </div>
+                            <p style="margin-top:-10px;">Le template par défaut de CMSFony. <br/>Un design flat qui assure l'élégance et la simplicité.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content text-center p-md">
+
+                        <h4 class="m-b-xxs">CMSFony template 2 </h4>
+                        <small>(Non disponible)</small>
+                        <p></p>
+                        <span class="simple_tag">Bientôt</span>
+                        <div class="m-t-md">
+                            <div class="p-lg" style="margin-top:-30px;">
+                                <a href="dashboard_4.html"><img class="img-responsive img-shadow" src="{{ asset('admin/img/dashbard4_2.png') }} " alt=""></a>
+                            </div>
+                            <p style="margin-top:-10px;">Ce template ne possède pas de  <br/>description pour le moment. <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+{% endblock %}

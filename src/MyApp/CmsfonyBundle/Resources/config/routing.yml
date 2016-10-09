@@ -1,0 +1,102 @@
+my_app_cmsfony_homepage:
+    path:     /admin
+    defaults: { _controller: MyAppCmsfonyBundle:Default:index }
+
+    
+###### MENU #####
+
+my_app_cmsfony_menuList:
+    path:     /admin/menuList
+    defaults: { _controller: MyAppCmsfonyBundle:Menu:menuList }
+my_app_cmsfony_addMenu:
+    path:     /admin/addMenu
+    defaults: { _controller: MyAppCmsfonyBundle:Menu:addMenu }
+my_app_cmsfony_editMenu:
+    path:     /admin/editMenu/{menuId}
+    defaults: { _controller: MyAppCmsfonyBundle:Menu:editMenu }
+my_app_cmsfony_menu_page:
+    path:     /p/{menuPageUrl}
+    defaults: { _controller: MyAppCmsfonyBundle:Menu:renderMenuUrl }
+    
+    
+###### PAGE #####
+my_app_cmsfony_pageList:
+    path:     /admin/pageList
+    defaults: { _controller: MyAppCmsfonyBundle:Page:pagelist }
+
+my_app_cmsfony_addPage:
+    path:     /admin/addPage
+    defaults: { _controller: MyAppCmsfonyBundle:Page:addPage }
+
+my_app_cmsfony_editPage:
+    path:     /admin/editPage/{pageId}/
+    defaults: { _controller: MyAppCmsfonyBundle:Page:editPage }
+    
+my_app_cmsfony_deletePage:
+    path:     /admin/pageList/deletePage/{pageId}/
+    defaults: { _controller: MyAppCmsfonyBundle:Page:deletePage }
+    
+my_app_cmsfony_unpublishPage:
+    path:     /admin/unpublishPage/{pageId}/
+    defaults: { _controller: MyAppCmsfonyBundle:Page:unpublishPage }
+
+my_app_cmsfony_homePageOn:
+    path:     /admin/HomePageOn/{pageId}/
+    defaults: { _controller: MyAppCmsfonyBundle:Page:HomePageOn }
+    
+my_app_cmsfony_pageInLastDays:
+    path:     /admin/pageInLast{nbDays}Days/
+    defaults: { _controller: MyAppCmsfonyBundle:Page:pageInLastDays }
+
+
+my_app_cmsfony_pageSearch:
+    path:     /admin/pageList/search/{keyword}/
+    defaults: { _controller: MyAppCmsfonyBundle:Page:pageSearch }
+    
+###### POST #####
+
+my_app_cmsfony_post_page:
+    path:     /p/{menuPageUrl}/post/{postId}
+    defaults: { _controller: MyAppCmsfonyBundle:Post:renderPost }
+    
+my_app_cmsfony_postList:
+    path:     /admin/postList
+    defaults: { _controller: MyAppCmsfonyBundle:Post:postList }
+    
+my_app_cmsfony_addPost:
+    path:     /admin/addPost
+    defaults: { _controller: MyAppCmsfonyBundle:Post:addPost }
+    
+my_app_cmsfony_editPost:
+    path:     /admin/editPost/{postId}/
+    defaults: { _controller: MyAppCmsfonyBundle:Post:editPost }
+    
+my_app_cmsfony_deletePost:
+    path:     /admin/deletePost/{postId}/
+    defaults: { _controller: MyAppCmsfonyBundle:Post:deletePost }
+    
+my_app_cmsfony_unpublishPost:
+    path:     /admin/unpublishPost/{postId}/
+    defaults: { _controller: MyAppCmsfonyBundle:Post:unpublishPost }
+    
+my_app_cmsfony_postInLastDays:
+    path:     /admin/postInLastDays/{nbDays}/
+    defaults: { _controller: MyAppCmsfonyBundle:Post:postInLastDays }
+    
+my_app_cmsfony_postSearch:
+    path:     /admin/postList/search/{keyword}/
+    defaults: { _controller: MyAppCmsfonyBundle:Post:postSearch }
+###### APPEARANCE #####
+
+
+my_app_cmsfony_profil:
+    path:     /admin/profil/
+    defaults: { _controller: MyAppCmsfonyBundle:Default:profil }
+
+my_app_cmsfony_templateList:
+    path:     /admin/templateList/
+    defaults: { _controller: MyAppCmsfonyBundle:Default:templateList }
+    
+my_app_cmsfony_defaultTemplateConfig:
+    path:     /admin/templateList/template-config-{templateTitle}/
+    defaults: { _controller: MyAppCmsfonyBundle:Default:defaultTemplateConfig }

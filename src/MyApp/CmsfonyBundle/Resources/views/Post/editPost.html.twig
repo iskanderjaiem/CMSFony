@@ -1,0 +1,94 @@
+{% extends 'MyAppCmsfonyBundle::base.html.twig' %}
+
+{% block bigTitle %} Liste des articles{% endblock %}
+{% block dest1 %}<a href="index.html">Articles</a>{% endblock %}
+{% block dest2 %}Ajouter un article{% endblock %}
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Ajouter un menu </h5>
+                    <div class="ibox-tools">
+                        <button class="btn btn-warning btn-sm fa fa-warning " onclick="window.location.href = '{{ path('my_app_cmsfony_deletePost',{'postId': postId}) }}'"> Supprimer </button>
+
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+
+                    <!-- <div class="form-group"><label class="col-sm-2 control-label">Date de publication</label>
+                        <div class="col-sm-10">
+                            <div  id="data_1">
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+
+
+                    <div class="form-group"><label class="col-sm-2 control-label">Date de publication</label>
+                        <div class="col-sm-10"> {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}</div>
+                    </div>
+
+                     <div class="form-group"><label class="col-sm-2 control-label">Publié <br/>
+                        </label>
+
+                        <div class="col-sm-10" style="margin-top:7px;">
+                            {{ form_widget(form.published)}}
+                        </div>
+
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-2 control-label">Titre de l'article</label>
+                        <div class="col-sm-10">{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}</div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-2 control-label">Image de l'article</label>
+                        <div class="col-sm-10">{{ form_widget(form.image.file, {'attr': {'class': 'form-control'}}) }}</div>
+                    </div>
+
+
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-2 control-label">Contenue</label>
+                    </div>
+                    {{ form_widget(form.content) }}
+                    <div class="hr-line-dashed"></div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            {{ form_widget(form.Appliquer, {'attr': {'class': 'btn btn-primary'}}) }}
+                            <a class="btn btn-white" href="{{ path('my_app_cmsfony_postList')}}" >Annuler</a>
+                        </div>
+                    </div> 
+
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}
+
+
+

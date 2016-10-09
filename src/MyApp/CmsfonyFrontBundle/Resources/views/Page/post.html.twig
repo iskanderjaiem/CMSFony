@@ -1,0 +1,86 @@
+{% extends 'MyAppCmsfonyFrontBundle::base.html.twig' %}
+
+{% block title %}CMSFony titrici{% endblock %}
+{% block smallTitle %}Blog{% endblock %}
+{% block bigTitle %}{{ post.title }}{% endblock %}
+    
+{% block content %}
+
+
+    <div class="container wrapper">
+        <div class="inner_content">
+
+            <div class="row">
+                <div class="span9 pad15">
+                    <div class="post">
+
+                        <div class="row">
+                            <div class="span9">
+
+                             
+                                <div class="pad5"></div>
+                                <h1 class="post_link ">{{ post.title }}</h1>
+                                <div class="clear"></div>
+
+                                <div class="post-meta muted">
+                                    <ul>
+                                        <li>Posté par <a href="#">{{ post.author }}</a> </li>
+                                        <!--<li>in <a href="#">web</a>, <a href="">graphics</a> </li>
+                                        <li>tags <a href="#">prints</a>, <a href="">design</a> </li>-->
+                                    </ul>
+                                </div> 
+
+                                        
+                                {% if post.image != null %}  
+                                    <center>
+                                    <img 
+                                        src="{{ asset(post.image.webPath) }}"
+                                        alt="{{ post.image.alt }}"
+                                        /> 
+                                    </center>
+                                {% endif %}
+                                <p>{{ post.content|raw }}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--end post-->
+
+                    <!--author box-->
+                    <div class="pad15"></div>
+                    <div class="well">
+                        <img src="{{ asset('front/img/small/author.jpg')}}" class="pull-left img-rounded pad_author" alt="" />
+                        <h3>{{ post.author }}</h3>
+                        <p>{{authorDescription}}<br /></p>
+                    </div>
+
+
+
+
+                    <div class="pad25"></div>
+
+                </div>
+
+                <!--sidebar
+                <div class="sidebar span3">
+
+                    <h4>Articles populaires</h4>
+                    <ul class="media-list">
+                        <li class="media">
+                            <img class="pull-left img-rounded" src="{{ asset('front/img/small/pop_post1.jpg')}}" alt="" />
+                            <div class="media-body">
+                                <small class="muted">07/05/13</small><br>
+                                <a href="#">Aliquam convallis erat a enim dictum gravida nulla</a></div>
+                        </li>
+
+                    </ul>
+
+                    <div class="pad15"></div>
+                    
+                </div>-->
+                <div class="pad45"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,192 @@
+{% extends 'MyAppCmsfonyBundle::base.html.twig' %}
+
+{% block bigTitle %} Liste des pages{% endblock %}
+{% block dest1 %}<a href="">Pages</a>{% endblock %}
+{% block dest2 %}Ajouter une page{% endblock %}
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Modifier la page </h5>
+                    <div class="ibox-tools">
+                        <button class="btn btn-warning btn-sm fa fa-warning " onclick="window.location.href = '{{ path('my_app_cmsfony_deletePage',{'pageId': pageId}) }}'"> Supprimer </button>
+
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a href="{{path('my_app_cmsfony_homePageOn',{'pageId': pageId})}}">
+                            <img src="{{asset('/admin/img/house02.png') }}"/> </a>
+                    </div>
+                </div>
+                <div class="ibox-content">  
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+
+                    <!-- <div class="form-group"><label class="col-sm-2 control-label">Date de publication</label>
+                        <div class="col-sm-10">
+                            <div  id="data_1">
+                                <div class="input-group date">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+
+                    <div class="form-group"><label class="col-sm-2 control-label">Date</label>
+                        <div class="col-sm-10">{{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}</div>
+                    </div>
+                    <div class="form-group"><label class="col-sm-2 control-label">Publié <br/>
+                        </label>
+
+                        <div class="col-sm-10" style="margin-top:7px;" >
+                            {{ form_widget(form.published)}}
+                        </div>
+
+                    </div>
+
+                    <div class="form-group"><label class="col-sm-2 control-label">Titre</label>
+                        <div class="col-sm-10">{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}</div>
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group"><label class="col-sm-2 control-label">Url de la page</label>
+                        <div class="col-sm-10">{{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}</div>
+                    </div>
+
+
+                    <div class="hr-line-dashed"></div>
+
+
+
+
+
+
+                    <div class="form-group"><label class="col-sm-2 control-label">Type de la page</label>
+
+
+
+                        <div class="col-sm-10">
+                            <br/>
+                            {{ form_widget(form.type, {'attr': {'class': 'form-control'} }) }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div hidden id="blogAlert" class="alert alert-success alert-info ">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                        Une page de type Blog affichera par défaut la liste de <a class="alert-link" href="{{path('my_app_cmsfony_postList')}}">vos articles</a>.
+                    </div>
+
+                    <div id="pageContent">
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group"><label class="col-sm-2 control-label">Contenue</label>
+                        </div>
+                        {{ form_widget(form.content) }}
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            {{ form_widget(form.Appliquer, {'attr': {'class': 'btn btn-primary'}}) }}
+                            <a class="btn btn-white" href="{{ path('my_app_cmsfony_pageList')}}" >Annuler</a>
+                        </div>
+                    </div> 
+
+
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Mainly scripts -->
+    <script src="{{ asset ('admin/js/jquery-2.1.1.js')}}"></script>
+    <script src="{{ asset ('admin/js/bootstrap.min.js')}}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset ('admin/js/inspinia.js')}}"></script>
+    <script src="{{ asset ('admin/js/plugins/pace/pace.min.js')}}"></script>
+    <script src="{{ asset ('admin/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+
+    <!-- Chosen -->
+    <script src="{{ asset ('admin/js/plugins/chosen/chosen.jquery.js')}}"></script>
+
+    <!-- JSKnob -->
+    <script src="{{ asset ('admin/js/plugins/jsKnob/jquery.knob.js')}}"></script>
+
+    <!-- Input Mask-->
+    <script src="{{ asset ('admin/js/plugins/jasny/jasny-bootstrap.min.js')}}"></script>
+
+    <!-- Data picker -->
+    <script src="{{ asset ('admin/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
+
+    <!-- NouSlider -->
+    <script src="{{ asset ('admin/js/plugins/nouslider/jquery.nouislider.min.js')}}"></script>
+
+    <!-- Switchery -->
+    <script src="{{ asset ('admin/js/plugins/switchery/switchery.js')}}"></script>
+
+    <!-- IonRangeSlider -->
+    <script src="{{ asset ('admin/js/plugins/ionRangeSlider/ion.rangeSlider.min.js')}}"></script>
+
+    <!-- iCheck -->
+    <script src="{{ asset ('admin/js/plugins/iCheck/icheck.min.js')}}"></script>
+
+    <!-- MENU -->
+    <script src="{{ asset ('admin/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+
+    <!-- Color picker -->
+    <script src="{{ asset ('admin/js/plugins/colorpicker/bootstrap-colorpicker.min.js')}}"></script>
+
+    <!-- Clock picker -->
+    <script src="{{ asset ('admin/js/plugins/clockpicker/clockpicker.js')}}"></script>
+
+    <!-- Image cropper -->
+    <script src="{{ asset ('admin/js/plugins/cropper/cropper.min.js')}}"></script>
+
+    <!-- Date range use moment.js')}} same as full calendar plugin -->
+    <script src="{{ asset ('admin/js/plugins/fullcalendar/moment.min.js')}}"></script>
+
+    <!-- Date range picker -->
+    <script src="{{ asset ('admin/js/plugins/daterangepicker/daterangepicker.js')}}"></script>
+
+
+
+    <script type="text/javascript">
+                            function typeInputManager() {
+                                var selected = $('#myapp_cmsfonybundle_page_type').val()
+                                if (selected == 'Blog') {
+                                    $('#pageContent').hide();
+                                    $('#blogAlert').show();
+
+                                } else {
+                                    $('#pageContent').show();
+                                    $('#blogAlert').hide();
+                                }
+                            }
+                            $(document).ready(function() {
+                                typeInputManager();
+                            });
+                            $('#myapp_cmsfonybundle_page_type').change(function() {
+                                typeInputManager();
+                            });
+
+
+                            
+    </script>
+{% endblock %}

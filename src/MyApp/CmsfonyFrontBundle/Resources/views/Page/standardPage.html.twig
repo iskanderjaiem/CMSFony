@@ -1,0 +1,11 @@
+{% extends 'MyAppCmsfonyFrontBundle::base.html.twig' %}
+
+{% block title %}CMSFony titrici{% endblock %}
+{% block body %}
+    
+     <div class="header">
+            {{ render(controller("MyAppCmsfonyBundle:Menu:renderPrimaryMenu"))}}
+        </div>
+        
+            {{ content|raw }}
+{% endblock %}

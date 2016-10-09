@@ -1,0 +1,60 @@
+
+<div class="container">
+    <!--logo-->
+    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <i class="fa fa-bars"></i></button>
+    <div class="logo">
+        <a href="index.html">
+            {% if template is defined %}
+                
+                {% block stylesheet %}
+    <!--  323A45 -->
+    <style>  
+        .header { 
+            padding:0 0;
+            background:{{template.headerBackgroundColor}};
+            margin:0 auto; 
+            min-height: 86px;
+            width: 100%;
+            z-index: 1000; 
+        }
+        
+        .nav-pills > li > a {
+	font-weight: 400;
+	color: {{template.headerFontColor}};
+	letter-spacing: 2px;
+	font-size: 13px;
+	display: block;
+	padding:24px 22px 22px 25px;
+	text-align: center!important;
+	text-transform: uppercase;
+}
+    </style>{% endblock %}
+
+    
+                <img src='{{ asset(template.ImageLogo.webPath)}}' class="animated bounceInDown"  width="150" height="100"/>
+            {% endif %}
+        </a>
+    </div>
+    <!--menu-->
+    <nav id="main_menu">
+        <div class="nav-collapse collapse">
+
+            <ul class="nav nav-pills">
+                <!-- <li class="dropdown active"><a href="javascript:{}">$menulist.home</a> 
+                 </li>-->
+                {% if menuPages is defined %}
+                    {% for currentPage in menuPages %}
+                        {% if currentPage.published ==true %}
+                            <li ><a href="{{ app.request.getBaseURL() }}/p/{{ currentPage.url }}">{{ currentPage.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+         {% block head %}{% endblock %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="{{ asset('admin/img/favico.png') }}" />
+        <title>{% block title %}CMSFony{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link href="{{ asset ('admin/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset ('admin/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+
+    <link href="{{ asset ('admin/css/animate.css')}}" rel="stylesheet">
+    <link href="{{ asset ('admin/css/style.css')}}" rel="stylesheet">
+
+    <!-- Sweet Alert -->
+    <link href="{{ asset ('admin/css/plugins/sweetalert/sweetalert.css')}}" rel="stylesheet">
+
+    <link href="{{ asset ('admin/css/animate.css')}}" rel="stylesheet">
+    <link href="{{ asset ('admin/css/style.css')}}" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="{{ asset('admin/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
+    
+    
+    
+</head>
+
+<body class="">
+    <div id="wrapper">
+
+
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                                <img alt="image" class="img-circle" src="{{ asset ('admin/img/profile_small.jpg')}}" />
+                            </span> 
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{ app.user.username }} </strong>
+                                    </span> <span class="text-muted text-xs block">Fondateur du site<b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <!-- <li><a href="profile.html">Profile</a></li>
+                                 <li><a href="contacts.html">Contacts</a></li>
+                                 <li><a href="mailbox.html">Mailbox</a></li>
+                                 <li class="divider"></li> -->
+                                <li><a href="{{ path('my_app_cmsfony_profil') }}">Mon profil</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            CMSFony
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">Tableau de bord</span> </a>
+
+                    </li>
+
+                    <li>
+                        <a href="empty_page.html#"><i class="fa fa-sitemap"></i> <span class="nav-label">Gestion des menus </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="{{ path('my_app_cmsfony_menuList') }}">Tous les menus</a></li>
+                            <li><a href="{{ path('my_app_cmsfony_addMenu') }}">Nouveau menu</a></li>
+
+                        </ul>
+                    </li>
+                    <!--
+    <li>
+        <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+    </li>
+                    -->
+                    <li>
+                        <a href="empty_page.html#"><i class="fa fa-files-o"></i> <span class="nav-label">Pages</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="{{ path('my_app_cmsfony_pageList') }}">Toutes les pages</a></li>
+                            <li><a href="{{ path('my_app_cmsfony_addPage') }}">Nouvelle page</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Articles</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="{{ path('my_app_cmsfony_postList') }}">Tous les articles</a></li>
+                            <li><a href="{{ path('my_app_cmsfony_addPost') }}">Nouveau article</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-magic"></i> <span class="nav-label">Apparence</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><a href="{{ path('my_app_cmsfony_templateList') }}">Gestion des templates</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a target="_blank" href="{{ path('my_app_cmsfony_front_homepage') }}"><i class="fa fa-desktop"></i> <span class="nav-label">Voir le site web</span> </a>
+                    </li>			   
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="chercher quelque chose..." class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">Bienvenue sur le Backoffice CMSFony.</span>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                <i class="fa fa-sign-out"></i> Déconnexion
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>{% block bigTitle %}{% endblock %}</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            {% block dest1 %}<a href=""></a>{% endblock %}
+                        </li>
+                        <li class="active">
+                            <strong>{% block dest2 %}{% endblock %}</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-sm-8">
+                    <div class="title-action">
+                        <a href="{{ path('my_app_cmsfony_front_homepage') }}" target="_blank" class="btn btn-primary">Voir le site web</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="wrapper wrapper-content">
+
+
+
+                {% for message in app.session.flashbag.get('alerte') %}
+                    <div hidden>
+                    <button type="button" class="btn btn-white" id="showwarning">{{message}}</button>
+                    </div>
+                {% endfor %}
+                {% for message in app.session.flashbag.get('notice') %}   <div hidden>
+                    <button type="button" class="btn btn-white" id="showsimple">{{message}}</button></div>
+                {% endfor %}
+
+                {% block content %} 
+                    <div class="middle-box text-center animated fadeInRightBig">
+                        <h3 class="font-bold">Page vide</h3>
+                        <div class="error-desc">
+                            Under construction.
+                            <br/><a href="index.html" class="btn btn-primary m-t">Dashboard</a>
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+            <div class="footer">
+                <div class="pull-right">
+                    <strong></strong>
+                </div>
+                <div>
+                    <strong>Copyright CMSFony - </strong> Jaiem Iskander &copy; 2015-2016
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="{{ asset ('admin/js/jquery-2.1.1.js')}}"></script>
+    <script src="{{ asset ('admin/js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
+    <script src="{{ asset ('admin/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset ('admin/js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset ('admin/js/inspinia.js')}}"></script>
+    <script src="{{ asset ('admin/js/plugins/pace/pace.min.js')}}"></script>
+
+    <script src="{{ asset('admin/js/plugins/nestable/jquery.nestable.js') }}"></script>
+
+    <!-- Toast -->
+    <script src="{{ asset('admin/js/plugins/toastr/toastr.min.js') }}"></script>
+<script type="text/javascript">
+
+        $(document).ready(function() {
+            $('#myapp_cmsfonybundle_defaultTemplate_headerFontColor').val($('#colorpicker').val()) ;
+            $('#myapp_cmsfonybundle_defaultTemplate_headerBackgroundColor').val($('#colorpicker2').val()) ;
+        });
+        $('#colorpicker').on('change', function() {
+            $('#myapp_cmsfonybundle_defaultTemplate_headerFontColor').val($('#colorpicker').val()) ;
+            $('#myapp_cmsfonybundle_defaultTemplate_headerBackgroundColor').val($('#colorpicker2').val()) ;
+        });
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            var i = -1;
+            var toastCount = 0;
+            var $toastlast;
+            if ($('#showsimple').text() != "") {
+                toastr.success("", $('#showsimple').text())
+            }
+            if ($('#showwarning').text() != "") {
+                toastr.warning("", $('#showwarning').text())
+            }
+        })
+        $(document).ready(function() {
+            $('.demo1').colorpicker();
+        });
+    </script>
+    
+    
+    <!-- Sweet alert -->
+    <script src="{{asset('admin/js/plugins/sweetalert/sweetalert.min.js')}}"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="{{asset('admin/js/inspinia.js')}}"></script>
+    <script src="{{asset('admin/js/plugins/pace/pace.min.js')}}"></script>
+    <script src="{{asset('admin/js/bootstrap-colorpicker.js')}}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+
+</html>

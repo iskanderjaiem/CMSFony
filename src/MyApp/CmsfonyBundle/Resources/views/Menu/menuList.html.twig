@@ -1,0 +1,75 @@
+{% extends 'MyAppCmsfonyBundle::base.html.twig' %}
+
+{% block bigTitle %}Gestion des menus{% endblock %}
+{% block dest1 %}<a href="{{ path('my_app_cmsfony_menuList') }}">Tous les menus</a>{% endblock %}
+{% block dest2 %}{% endblock %}
+   {% block content %}
+    
+    
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Liste des menus</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="table_basic.html#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                               <!-- <div class="col-sm-5 m-b-xs"><select class="input-sm form-control input-s-sm inline">
+                                    <option value="0">Supprimer</option>
+                                    <option value="1">Option 2</option>
+                                    <option value="2">Option 3</option>
+                                    <option value="3">Option 4</option>
+                                </select>
+                                </div>-->
+                                <div class="col-sm-4 m-b-xs">
+                                    <div data-toggle="buttons" class="btn-group">
+                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> Jour </label>
+                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> Semaine </label>
+                                        <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> Mois </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="input-group"><input type="text" placeholder="Chercher" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+
+                                       <!-- <th></th>-->
+                                        <th>Titre du menu</th>
+                                        <th>Principal <small> (primary) </small></th>
+                                        
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                {% for currentMenu in menus %}
+                                    <tr>
+                                        <!--<td><input type="checkbox"  checked class="i-checks" name="input[]"></td>
+                                        --><td><a href="{{path('my_app_cmsfony_editMenu',{'menuId': currentMenu.id})}}">{{ currentMenu.title }}</a></td>
+                                        <td> {% if currentMenu.position =='primary' %} <img  src="{{ asset('admin/img/star01.png')}}"/> {% endif %}
+                                       </td>
+                                     </tr>
+                                {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+   {% endblock %}

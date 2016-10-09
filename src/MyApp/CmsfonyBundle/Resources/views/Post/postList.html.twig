@@ -1,0 +1,160 @@
+{% extends 'MyAppCmsfonyBundle::base.html.twig' %}
+
+{% block bigTitle %} Gestion des articles{% endblock %}
+{% block dest1 %}<a href="index.html">Tous les articles</a>{% endblock %}
+{% block dest2 %}{% endblock %}
+
+
+{% block content %}
+    
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Liste des articles </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="table_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="table_basic.html#">Config option 1</a>
+                            </li>
+                            <li><a href="table_basic.html#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row"><!--
+                        <div class="col-sm-5 m-b-xs"><select class="input-sm form-control input-s-sm inline">
+                                <option value="0">Supprimer</option>
+                                <option value="1">Option 2</option>
+                                <option value="2">Option 3</option>
+                                <option value="3">Option 4</option>
+                            </select>
+                        </div>-->
+                        
+                        <div class="col-sm-4 m-b-xs"></center>
+                               <label class="btn btn-sm btn-primary ">  <div onclick="window.location = '{{ path('my_app_cmsfony_addPost')}}'" id="option2" name="options"> Ajouter </div> </label>
+                        </div>
+                        
+                        <div class="col-sm-4 m-b-xs">
+                                         
+                            <div data-toggle="buttons" class="btn-group">
+                                {% if nbDays is defined %}
+                                  
+                                    {% if nbDays==1 %}
+                                        <label class="btn btn-sm btn-white active"> <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 1})}}'"  id="option1" name="options"> Jour</div> </label>
+                                        <label class="btn btn-sm btn-white ">  <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 7})}}'" id="option2" name="options"> Semaine</div> </label>
+                                        <label class="btn btn-sm btn-white">  <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 30})}}'" id="option3" name="options"> Mois </div></label>
+
+                                    {% elseif nbDays==7%}
+                                        <label class="btn btn-sm btn-white"> <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 1})}}'"  id="option1" name="options"> Jour</div> </label>
+                                        <label class="btn btn-sm btn-white active">  <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 7})}}'" id="option2" name="options"> Semaine</div> </label>
+                                        <label class="btn btn-sm btn-white">  <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 30})}}'" id="option3" name="options"> Mois </div></label>
+
+                                    {% elseif nbDays==30%}
+                                        <label class="btn btn-sm btn-white"> <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 1})}}'"  id="option1" name="options"> Jour</div> </label>
+                                        <label class="btn btn-sm btn-white">  <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 7})}}'" id="option2" name="options"> Semaine</div> </label>
+                                        <label class="btn btn-sm btn-white active">  <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 30})}}'" id="option3" name="options"> Mois </div></label>
+
+                                    {% endif %}
+                                {% else %}    
+                                    <label class="btn btn-sm btn-white active ">  <div onclick="window.location = '{{ path('my_app_cmsfony_postList')}}'" id="option2" name="options"> Tous</div> </label>
+
+                                    <label class="btn btn-sm btn-white"> <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 1})}}'"  id="option1" name="options"> Jour</div> </label>
+                                    <label class="btn btn-sm btn-white">  <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 7})}}'" id="option2" name="options"> Semaine</div> </label>
+                                    <label class="btn btn-sm btn-white">  <div onclick="window.location = '{{ path('my_app_cmsfony_postInLastDays',{'nbDays': 30})}}'" id="option3" name="options"> Mois </div></label>
+
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group"><input id="keyInput" type="text" placeholder="Chercher" class="input-sm form-control"> <span class="input-group-btn">
+
+                                    <script>
+                                        function search() {
+                                            $keyInput = $('#keyInput').val();
+                                            if ($keyInput) {
+                                                $url = '{{ path("my_app_cmsfony_postSearch", {'keyword': 'key'}) }}';
+                                                $url = $url.replace("key", $keyInput);
+                                                window.location = $url;
+                                            }
+                                        }
+                                        ;
+                                    </script>
+                                    <button onclick="search()" type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+
+                                    <!-- <th></th>-->
+                                    <th>Titre de l'article </th>
+                                    <th>Auteur </th>
+                                    <th>Contenue</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for currentPost in posts %}
+                                    <tr>
+                                        <!-- <td><input type="checkbox"   name="input[]"></td>-->
+                                        <td><a href="{{ path('my_app_cmsfony_editPost', {'postId': currentPost.id})  }}">{{ currentPost.title }}</a></td>
+                                        <td>{{ currentPost.author }}</td>
+                                        <td>{{ currentPost.content[:60]|striptags|trim|convert_encoding('UTF-8', 'HTML-ENTITIES') }} [...]</td>
+                                        <td>{{currentPost.date|date('d M Y')}}</td>
+
+                                        <td>{% if currentPost.published %}<a alt="/" href="{{ path('my_app_cmsfony_unpublishPost',{'postId': currentPost.id})}}"><i class="fa fa-check text-navy"></i></a>
+                                            {% else %}<a alt="/" href="{{ path('my_app_cmsfony_unpublishPost',{'postId': currentPost.id})}}"><img src="{{asset('/admin/img/circle01.png')}}"/></a>
+                                                    {% endif %}
+                                                </td>
+                                                <td >
+                                                    <button class="btn btn-info btn-xs " onclick="window.location.href = '{{ path('my_app_cmsfony_editPost', {'postId': currentPost.id})  }}'"> modifier </button>
+                                                    <button class="btn btn-warning btn-xs " onclick="window.location.href = '{{ path('my_app_cmsfony_deletePost',{'postId': currentPost.id}) }}'"> Supprimer </button>
+
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+
+                                            </tbody>
+                                        </table>
+                                        <center>
+                                            <div class="navigation">
+                                                {{ knp_pagination_render(posts) }}
+                                            </div>
+                                        </center>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

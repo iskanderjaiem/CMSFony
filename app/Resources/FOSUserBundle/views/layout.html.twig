@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <title>CMSFony | Login</title>
+
+    <link href="{{ asset ('admin/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset ('admin/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
+
+    <link href="{{ asset ('admin/css/animate.css')}}" rel="stylesheet">
+    <link href="{{ asset ('admin/css/style.css')}}" rel="stylesheet">
+  </head>
+
+  <body  class="gray-bg"> 
+  <div class="middle-box text-center loginscreen animated fadeInDown">
+        <!--  FOS /////////////////////////////// -->
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+             <!--   <a href="{{ path('fos_user_security_login') }}">{{ 'Login'|trans({}, 'FOSUserBundle') }}</a>-->
+                <br /><br />
+            {% endif %}
+        </div>
+        
+        
+        
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+        
+         
+        <!--  ENDFOS /////////////////////////////// -->
+  </div>
+
+  </body>
+</html>
